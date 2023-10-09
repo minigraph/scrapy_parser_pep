@@ -4,12 +4,12 @@ import datetime as dt
 
 
 BASE_DIR = Path(__file__).parent.parent
-RESULTS_DIR = BASE_DIR / 'results'
 FILE_DATE_FORMAT = '%Y-%m-%d_%H-%M-%S'
 
 
 def CreateResultDir():
-    RESULTS_DIR.mkdir(exist_ok=True)
+    results = BASE_DIR / 'results'
+    results.mkdir(exist_ok=True)
 
 
 class PepParsePipeline:
@@ -25,10 +25,11 @@ class PepParsePipeline:
         for status_count in self.pep.values():
             total_count += status_count
 
-        now = dt.datetime.now()
+        time_zone = dt.timezone(dt.timedelta(hours=0))
+        now = dt.datetime.now(time_zone)
         now_formatted = now.strftime(FILE_DATE_FORMAT)
         file_name = f'status_summary_{now_formatted}.csv'
-        file_path = RESULTS_DIR / file_name
+        file_path = BASE_DIR / 'results' / file_name
         with open(file_path, mode='w', encoding='utf-8') as f:
             f.write('Статус,Количество\n')
             for key, value in self.pep.items():
