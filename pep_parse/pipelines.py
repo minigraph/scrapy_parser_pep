@@ -1,15 +1,15 @@
 from collections import defaultdict
 from pathlib import Path
 import datetime as dt
-
+                                                                                            
 
 BASE_DIR = Path(__file__).parent.parent
-FILE_DATE_FORMAT = '%Y-%m-%d_%H-%M-%S'
+FILE_DATE_FORMAT = '%Y-%m-%d_%H-%M-%S'                                                               
 
 
-def CreateResultDir():
+def creare_results_dir():
     results = BASE_DIR / 'results'
-    results.mkdir(exist_ok=True)
+    results.mkdir(exist_ok=True)                                                                                                         
 
 
 class PepParsePipeline:
@@ -37,4 +37,4 @@ class PepParsePipeline:
             f.write(f'Total,{total_count}\n')
 
 
-CreateResultDir()
+creare_results_dir()

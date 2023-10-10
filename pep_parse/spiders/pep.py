@@ -2,7 +2,7 @@ import scrapy
 from pep_parse.items import PepParseItem
 
 
-PEPS_URL = 'peps.python.org'
+PEPS_URL: str = 'peps.python.org'
 
 
 class PepSpider(scrapy.Spider):
